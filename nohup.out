@@ -1,0 +1,16 @@
+WARNING: package sun.awt.X11 not in java.desktop
+================================================================================
+Don't use GUI mode for load testing !, only for Test creation and Test debugging.
+For load testing, use CLI Mode (was NON GUI):
+   jmeter -n -t [jmx file] -l [results file] -e -o [Path to web report folder]
+& increase Java Heap to meet your test requirements:
+   Modify current env variable HEAP="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m" in the jmeter batch file
+Check : https://jmeter.apache.org/usermanual/best-practices.html
+================================================================================
+Generate Summary Results +      8 in 00:00:12 =    0.7/s Avg:  1508 Min:  1345 Max:  1663 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+Generate Summary Results +     20 in 00:00:29 =    0.7/s Avg:  1453 Min:  1069 Max:  1895 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+Generate Summary Results =     28 in 00:00:41 =    0.7/s Avg:  1468 Min:  1069 Max:  1895 Err:     0 (0.00%)
+Generate Summary Results +     16 in 00:00:23 =    0.7/s Avg:  1446 Min:   550 Max:  1911 Err:     1 (6.25%) Active: 0 Started: 1 Finished: 1
+Generate Summary Results =     44 in 00:01:04 =    0.7/s Avg:  1460 Min:   550 Max:  1911 Err:     1 (2.27%)
+Generate Summary Results =      3 in 00:00:04 =    0.8/s Avg:  1261 Min:   889 Max:  1912 Err:     2 (66.67%)
+Generate Summary Results =      3 in 00:00:03 =    1.2/s Avg:   814 Min:    50 Max:  1418 Err:     2 (66.67%)
