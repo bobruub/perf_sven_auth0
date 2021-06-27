@@ -1,0 +1,25 @@
+function (request, state, logger) {
+	logger.info('Received a DEFAULT Request.');
+
+	// current date and time
+	var currentDate = new Date().getTime();
+		
+	var reqUrl = request.path;
+	var reqMethod = request.method.toUpperCase();
+	var reqBody = request.body;
+	//logger.info('SVEN:AUTH0,' + currentDate + ',DEFAULT,' + reqMethod + "," + reqUrl);
+	//logger.info("reqMethod: " + reqMethod);
+	//logger.info("   reqUrl: " + reqUrl);
+	//logger.info("  reqBody: " + reqBody);
+		
+	return { 
+		statusCode: 404, 
+		headers: {
+				'Connection': 'Keep-Alive'
+			},
+			body: "Sven AUTH0 - 404 Not Found.."
+			}; 
+	 
+}
+
+

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="hostIp" elementType="Argument">
+            <stringProp name="Argument.name">hostIp</stringProp>
+            <stringProp name="Argument.value">127.0.0.1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">10.13.236.69</stringProp>
+          </elementProp>
+          <elementProp name="hostPort" elementType="Argument">
+            <stringProp name="Argument.name">hostPort</stringProp>
+            <stringProp name="Argument.value">8080</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">8081</stringProp>
+          </elementProp>
+          <elementProp name="LiveHostIp" elementType="Argument">
+            <stringProp name="Argument.name">LiveHostIp</stringProp>
+            <stringProp name="Argument.value">api.stats.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="influxdbMetricsSender" elementType="Argument">
+              <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+              <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbUrl" elementType="Argument">
+              <stringProp name="Argument.name">influxdbUrl</stringProp>
+              <stringProp name="Argument.value">http://localhost:8086/write?db=jmeter</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbToken" elementType="Argument">
+              <stringProp name="Argument.name">influxdbToken</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="measurement" elementType="Argument">
+              <stringProp name="Argument.name">measurement</stringProp>
+              <stringProp name="Argument.value">jmeter</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.scheme" elementType="Argument">
+              <stringProp name="Argument.name">es.scheme</stringProp>
+              <stringProp name="Argument.value">https</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.host" elementType="Argument">
+              <stringProp name="Argument.name">es.host</stringProp>
+              <stringProp name="Argument.value">vpc-perfmaster-pqcaxykc7ae3sseqxm6gnlisku.ap-southeast-2.es.amazonaws.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.timout.ms" elementType="Argument">
+              <stringProp name="Argument.name">es.timout.ms</stringProp>
+              <stringProp name="Argument.value">200</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.test.mode" elementType="Argument">
+              <stringProp name="Argument.name">es.test.mode</stringProp>
+              <stringProp name="Argument.value">info</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.bulk.size" elementType="Argument">
+              <stringProp name="Argument.name">es.bulk.size</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.xpack.user" elementType="Argument">
+              <stringProp name="Argument.name">es.xpack.user</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.port" elementType="Argument">
+              <stringProp name="Argument.name">es.port</stringProp>
+              <stringProp name="Argument.value">443</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.index" elementType="Argument">
+              <stringProp name="Argument.name">es.index</stringProp>
+              <stringProp name="Argument.value">autho</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.parse.all.res.headers" elementType="Argument">
+              <stringProp name="Argument.name">es.parse.all.res.headers</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.xpack.password" elementType="Argument">
+              <stringProp name="Argument.name">es.xpack.password</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.timestamp" elementType="Argument">
+              <stringProp name="Argument.name">es.timestamp</stringProp>
+              <stringProp name="Argument.value">yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSSZZ</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.parse.all.req.headers" elementType="Argument">
+              <stringProp name="Argument.name">es.parse.all.req.headers</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="es.sample.filter" elementType="Argument">
+              <stringProp name="Argument.name">es.sample.filter</stringProp>
+              <stringProp name="Argument.value">TAB</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxDBRawBackendListenerClient</stringProp>
+      </BackendListener>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">text/plain</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <kg.apc.jmeter.config.VariablesFromCSV guiclass="kg.apc.jmeter.config.VariablesFromCSVGui" testclass="kg.apc.jmeter.config.VariablesFromCSV" testname="Data File - Environment Details" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+        <stringProp name="filename">data/testEnvironment.properties</stringProp>
+        <stringProp name="variablesPrefix"></stringProp>
+        <stringProp name="delimiter">=</stringProp>
+        <intProp name="skipLines">0</intProp>
+        <boolProp name="storeSysProp">false</boolProp>
+      </kg.apc.jmeter.config.VariablesFromCSV>
+      <hashTree/>
+      <kg.apc.jmeter.config.VariablesFromCSV guiclass="kg.apc.jmeter.config.VariablesFromCSVGui" testclass="kg.apc.jmeter.config.VariablesFromCSV" testname="Data File - Test Config" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+        <stringProp name="filename">data/testConfig.properties</stringProp>
+        <stringProp name="variablesPrefix"></stringProp>
+        <stringProp name="delimiter">=</stringProp>
+        <intProp name="skipLines">0</intProp>
+        <boolProp name="storeSysProp">false</boolProp>
+      </kg.apc.jmeter.config.VariablesFromCSV>
+      <hashTree/>
+      <kg.apc.jmeter.config.VariablesFromCSV guiclass="kg.apc.jmeter.config.VariablesFromCSVGui" testclass="kg.apc.jmeter.config.VariablesFromCSV" testname="Data File - User Details" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+        <stringProp name="filename">data/testUsers.properties</stringProp>
+        <stringProp name="variablesPrefix"></stringProp>
+        <stringProp name="delimiter">=</stringProp>
+        <intProp name="skipLines">0</intProp>
+        <boolProp name="storeSysProp">false</boolProp>
+      </kg.apc.jmeter.config.VariablesFromCSV>
+      <hashTree/>
+      <kg.apc.jmeter.config.VariablesFromCSV guiclass="kg.apc.jmeter.config.VariablesFromCSVGui" testclass="kg.apc.jmeter.config.VariablesFromCSV" testname="Data File - Throughput Details" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+        <stringProp name="filename">data/testThroughput.properties</stringProp>
+        <stringProp name="variablesPrefix"></stringProp>
+        <stringProp name="delimiter">=</stringProp>
+        <intProp name="skipLines">0</intProp>
+        <boolProp name="storeSysProp">false</boolProp>
+      </kg.apc.jmeter.config.VariablesFromCSV>
+      <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp_Data_Files" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1480653426000</longProp>
+        <longProp name="ThreadGroup.end_time">1480653426000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="9999 - Load Redis" enabled="false">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.util.ArrayList;
+import java.util.List;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
+import redis.clients.jedis.Pipeline;
+import java.text.SimpleDateFormat; 
+import java.util.Date; 
+import java.util.Random;
+import java.text.DecimalFormat;
+import java.io.File;
+import java.text.SimpleDateFormat; 
+import java.util.Date; 
+
+// Connect to Redis server
+String pRedisHost = vars.get(&quot;pRedisHost&quot;);
+int pRedisPort = Integer.parseInt(vars.get(&quot;pRedisPort&quot;));
+log.info(&quot;-----------------------------------------&quot;);
+JedisPoolConfig config = new JedisPoolConfig();
+JedisPool pool = new JedisPool(config, pRedisHost , pRedisPort);
+Jedis jedis = null;
+jedis = pool.getResource();
+log.info(&quot;Redis ... &quot; + pRedisHost + &quot;:&quot; + pRedisPort);
+log.info(&quot;Redis running... &quot; + jedis.ping());
+
+// setup files to load
+String[] redisSetArray = new String[19];
+redisSetArray[0] = &quot;interfaces&quot;;
+int arrayCount = 0;
+String redisSetName = &quot;&quot;;
+
+for (int i=0; i&lt;=arrayCount; i++){
+	// Clear accounts
+	redisSetName = redisSetArray[i];
+	log.info(&quot;clearing redis set: &quot; + redisSetName);
+	jedis.del(redisSetName);
+	log.info(&quot;\tcleared file: Count = &quot; + jedis.scard(redisSetName));
+}
+
+SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy/MM/dd&apos;T&apos;HH:mm:ss&quot;);
+Date date = null;
+String Transaction_Datetime = null;
+
+for (i=0; i&lt;=arrayCount; i++){
+	redisSetName = redisSetArray[i];
+	Pipeline pipeline = jedis.pipelined();
+	try  
+	{  
+		File file=new File(&quot;data/&quot; + redisSetName + &quot;.csv&quot;);    //creates a new file instance  
+		FileReader fr=new FileReader(file);   //reads the file  
+		BufferedReader br=new BufferedReader(fr);  //creates a buffering character input stream  
+		StringBuffer sb=new StringBuffer();    //constructs a string buffer with no characters  
+		String line;  
+		date = new Date();
+		Transaction_Datetime = dateFormat.format(date);
+		int recCount = 0;
+	     String outLine;
+		log.info(&quot;loading redis &quot; + redisSetName + &quot; set. Starting at: &quot; + Transaction_Datetime + &quot; ...&quot;);
+		while((line=br.readLine())!=null)  {  
+			log.info(&quot;line: &quot; + line);
+			pipeline.sadd(redisSetName, line);
+		} 
+		pipeline.sync(); 
+		fr.close();    //closes the stream and release the resources  
+		date = new Date();
+		Transaction_Datetime = dateFormat.format(date);
+	
+	}  catch(IOException e)  {  
+		log.info(&quot;error: &quot; + e);
+		e.printStackTrace();  
+	}  
+	log.info(&quot;loaded &quot; + redisSetName + &quot; file: &quot; + jedis.scard(redisSetName) + &quot; finished at &quot; + Transaction_Datetime + &quot; ...&quot;);
+
+}
+log.info(&quot;-----------------------------------------&quot;);  </stringProp>
+          <stringProp name="TestPlan.comments">	</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="tg_check_auth0_sven" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="false"/>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="9999 - Connect to REDIS" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.util.ArrayList;
+import java.util.List;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
+
+// Connect to Redis server
+String pRedisHost = vars.get(&quot;pRedisHost&quot;);
+int pRedisPort = Integer.parseInt(vars.get(&quot;pRedisPort&quot;));
+log.info(&quot;-----------------------------------------&quot;);
+JedisPoolConfig config = new JedisPoolConfig();
+JedisPool pool = new JedisPool(config, pRedisHost , pRedisPort);
+Jedis jedis = null;
+jedis = pool.getResource();
+
+log.info(&quot;Once Only - Redis ... &quot; + pRedisHost + &quot;:&quot; + pRedisPort);
+log.info(&quot;Redis running... &quot; + jedis.ping());
+// save redis details to a variable
+String threadNo = ctx.getThreadNum();
+String threadName = ctx.getThreadGroup().getName();
+String jedisString = threadName + &quot;_&quot; + threadNo;
+log.info(&quot;jedisString: &quot; + jedisString);
+vars.put(&quot;jedisStringName&quot;, jedisString);
+props.put(jedisString, jedis);
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
+        </LoopController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="9999 - redis interface" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.util.ArrayList;
+import java.util.List;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
+
+String redisSetName = &quot;interfaces&quot;;
+
+// get the redis object from once only controller
+//String jedisStringName = vars.get(&quot;jedisStringName&quot;);
+String jedisStringName = vars.get(&quot;jedisStringName&quot;);
+Jedis jedis = props.get(jedisStringName);
+
+// select a random strings from the set
+String setRandom = jedis.spop(redisSetName);
+if (setRandom.equals(null)){
+	ctx.getThread().stop();
+}
+jedis.srem(redisSetName, setRandom); 
+String[] interfaceDetailsArray = setRandom.split(&quot;,&quot;);
+
+int interfaceDetailsArraySize = interfaceDetailsArray.length;
+
+if (interfaceDetailsArraySize == 3)
+{
+	vars.put(&quot;interfaceName&quot;, interfaceDetailsArray[0]);
+	vars.put(&quot;interfaceURL&quot;, interfaceDetailsArray[2]);
+	vars.put(&quot;interfaceCheckString&quot;, interfaceDetailsArray[0]);
+} else {
+	ctx.getThread().stop();
+}
+return;
+log.info(&quot;-----------------------------------------&quot;);
+log.info(&quot;jedisStringName: &quot; + jedisStringName);
+log.info(&quot;interfaceDetailsArraySize: &quot; + interfaceDetailsArraySize);
+log.info(&quot;interfaceName: &quot; + interfaceDetailsArray[0]);
+log.info(&quot;interfaceURL: &quot; + interfaceDetailsArray[2]);
+log.info(&quot;interfaceCheckString: &quot; + interfaceDetailsArray[0]);
+log.info(&quot;-----------&quot;);
+
+
+
+
+
+</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TAB auth0_sven_check - 01_request_verification_email" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${hostIp}</stringProp>
+            <stringProp name="HTTPSampler.port">${hostPort}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/auth0/email</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query">Failure = false;
+
+if (!new String(ResponseData).contains(&quot;01_request_verification_email&quot;)) {
+   	Failure = true;	
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TAB auth0_sven_check - 02_verify_verification_code" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${hostIp}</stringProp>
+            <stringProp name="HTTPSampler.port">${hostPort}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/auth0/verifycode</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query">Failure = false;
+
+if (!new String(ResponseData).contains(&quot;02_verify_verification_code&quot;)) {
+   	Failure = true;	
+}</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <Summariser guiclass="SummariserGui" testclass="Summariser" testname="Generate Summary Results" enabled="true"/>
+      <hashTree/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Think Time" enabled="true"/>
+      <hashTree>
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+          <stringProp name="ConstantTimer.delay">100</stringProp>
+          <stringProp name="RandomTimer.range">200</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
+      </hashTree>
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>false</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <longProp name="interval_grouping">1000</longProp>
+        <boolProp name="graph_aggregated">false</boolProp>
+        <stringProp name="include_sample_labels"></stringProp>
+        <stringProp name="exclude_sample_labels"></stringProp>
+        <stringProp name="start_offset"></stringProp>
+        <stringProp name="end_offset"></stringProp>
+        <boolProp name="include_checkbox_state">false</boolProp>
+        <boolProp name="exclude_checkbox_state">false</boolProp>
+      </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+      <hashTree/>
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>false</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <longProp name="interval_grouping">500</longProp>
+        <boolProp name="graph_aggregated">false</boolProp>
+        <stringProp name="include_sample_labels"></stringProp>
+        <stringProp name="exclude_sample_labels"></stringProp>
+        <stringProp name="start_offset"></stringProp>
+        <stringProp name="end_offset"></stringProp>
+        <boolProp name="include_checkbox_state">false</boolProp>
+        <boolProp name="exclude_checkbox_state">false</boolProp>
+      </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

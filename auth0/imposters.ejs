@@ -1,0 +1,75 @@
+<%# -------------------------------------------------------------------- %>
+<%# ShowME Page for connectivity debugging                               %>
+<%# -------------------------------------------------------------------- %>
+	{
+	  "responses": [{
+	  "inject": "<%- stringify(filename, 'auth0//showme.ejs') %>",
+	  "_behaviors": {
+			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			}
+	  }],
+	  "predicates": 
+	  [
+			{ 
+				"contains": { "path": "showme" } 
+								
+			}
+		]
+	},
+
+<%# -------------------------------------------------------------------- %>
+<%# 01_request_verification_email %>
+<%# -------------------------------------------------------------------- %>
+	{
+	  "responses": [{
+	  "inject": "<%- stringify(filename, 'auth0//01_request_verification_email.ejs') %>",
+	  "_behaviors": {
+			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			}
+	  }],
+	 "predicates": 
+	  [
+			{ 
+				        "contains": { "path": "/auth0/email" }, 
+						"caseSensitive": true
+			}
+		]
+	},
+	
+
+<%# -------------------------------------------------------------------- %>
+<%# 02_verify_verification_code %>
+<%# -------------------------------------------------------------------- %>
+	{
+	  "responses": [{
+	  "inject": "<%- stringify(filename, 'auth0//02_verify_verification_code.ejs') %>",
+	  "_behaviors": {
+			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			}
+	  }],
+	 "predicates": 
+	  [
+			{ 
+				"contains": { "path": "/auth0/verifycode" } 
+			}
+		]
+	},
+
+<%# -------------------------------------------------------------------- %>
+<%# Default no other match                                               %>
+<%# -------------------------------------------------------------------- %>
+	{
+	  "responses": [{
+	  "inject": "<%- stringify(filename, 'auth0//default.ejs') %>",
+	  	  "_behaviors": {
+			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			}
+	  }],
+	  "predicates": 
+	  [
+			{ 
+				"contains": { "path": "/" } 
+			}
+		]
+	  
+	}

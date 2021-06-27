@@ -1,0 +1,31 @@
+function (request, state, logger) {
+
+// current date and time
+	var currentDate = new Date().getTime();
+
+// log details
+	var logString = '02_verify_verification_code';
+	console.log("auth0 - " + logString);
+	
+// log details to log file
+	var reqUrl = request.path;
+	var reqMethod = request.method.toUpperCase();
+	//logger.info("reqMethod: " + reqMethod);
+	//logger.info("   reqUrl: " + reqUrl);
+	logger.info('SVEN:AUTH0,' + currentDate + ',' + logString + ',' + reqMethod + "," + reqUrl);
+
+// build the response
+	var response = logString;
+
+	return {
+//
+// send the response
+//
+	headers: {
+				'Content-Type': 'application/xml',
+				'Connection': 'Keep-Alive'
+			},
+			body: response
+			};		
+	
+}     
