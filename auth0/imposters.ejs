@@ -8,11 +8,11 @@
 			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
 			}
 	  }],
-	  "predicates": 
+	  "predicates":
 	  [
-			{ 
-				"contains": { "path": "showme" } 
-								
+			{
+				"contains": { "path": "showme" }
+
 			}
 		]
 	},
@@ -24,19 +24,17 @@
 	  "responses": [{
 	  "inject": "<%- stringify(filename, 'auth0//01_request_verification_email.ejs') %>",
 	  "_behaviors": {
-			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			"wait": "function() { return Math.floor(Math.random() * 1000) + 1000; }"
 			}
 	  }],
-	 "predicates": 
+	 "predicates":
 	  [
-			{ 
-				        "contains": { "path": "/auth0/email" }, 
+			{
+				        "contains": { "path": "/auth0/email" },
 						"caseSensitive": true
 			}
 		]
 	},
-	
-
 <%# -------------------------------------------------------------------- %>
 <%# 02_verify_verification_code %>
 <%# -------------------------------------------------------------------- %>
@@ -44,13 +42,13 @@
 	  "responses": [{
 	  "inject": "<%- stringify(filename, 'auth0//02_verify_verification_code.ejs') %>",
 	  "_behaviors": {
-			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			"wait": "function() { return Math.floor(Math.random() * 500) + 1000; }"
 			}
 	  }],
-	 "predicates": 
+	 "predicates":
 	  [
-			{ 
-				"contains": { "path": "/auth0/verifycode" } 
+			{
+				"contains": { "path": "/auth0/verifycode" }
 			}
 		]
 	},
@@ -62,14 +60,14 @@
 	  "responses": [{
 	  "inject": "<%- stringify(filename, 'auth0//default.ejs') %>",
 	  	  "_behaviors": {
-			"wait": "function() { return Math.floor(Math.random() * 901) + 1000; }"
+			"wait": "function() { return Math.floor(Math.random() * 500) + 1000; }"
 			}
 	  }],
-	  "predicates": 
+	  "predicates":
 	  [
-			{ 
-				"contains": { "path": "/" } 
+			{
+				"contains": { "path": "/" }
 			}
 		]
-	  
+
 	}
